@@ -1,0 +1,24 @@
+{
+  "name": "y",
+  "homepage": "y",
+  "authors": [
+    "y"
+  ],
+  "description": "y",
+  "main": "y",
+  "keywords": [
+    "y"
+  ],
+  "license": "y",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "jquery": "^3.0.0"
+  }
+}

@@ -1,0 +1,33 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title></title>
+        <script src="bower_components/jquery/dist/jquery.js"></script>
+        
+        <style>
+          
+        </style>
+    </head>
+    <body>
+       <button id="github">This is Some Button</button>
+       <div class="display"></div>
+    <script>
+   
+    
+    $('button').click(function() {
+         $.get("https://api.github.com/users/nicolecpeoples", displayName)
+        // Notice that displayName is a function that takes in 1 parameter (this is the data that comes back from the API)
+        function displayName(data) {
+          console.log(data);
+          console.log(data.name);
+        $(".display").html(data.name);
+      };
+    
+    })
+    </script>
+    </body>
+</html>
