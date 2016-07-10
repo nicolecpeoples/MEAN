@@ -1,0 +1,66 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title></title>
+        <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+        <script type ="text/javascript" src="/socket.io/socket.io.js"></script>
+         <script type ="text/javascript">
+        $(document).ready(function (){
+            // this triggers the connection event in our server!
+            var socket = io.connect();
+            // we'll write all the socket stuff after the above line!
+            
+            $('#add_info').click(function (event){
+                event.preventDefault();
+
+                var user_info = {
+                    name: $('[name="name"]').val(),
+                    location: $('[name="location"]').val(),
+                    language: $('[name="language"]').val(),
+                    comment: $('[name="comment"]').val(),
+                }
+                    socket.emit("posting_form", user_info);
+                      console.log(user_info);
+                      console.log($('[name="name"]').val());
+
+            });
+            socket.on('updated_message', function (data){
+                console.log('The server says: ' + JSON.stringify(data.response));
+                $(".socket-info").html("You emitted the following information to the server:" + JSON.stringify(data.response) + "<p> Your lucky number emitted by the server is: " + data.lucky_number + "</p>");
+            });
+        });
+    </script>
+    </head>
+    <body>
+        <div class="socket-info">
+
+        </div>
+    	<div class="form-wrap">
+            <form action='/posting_form' method='post'>
+                <p> <label for="name"> Your Name: </label><input type="text" name="name" id="name"></p>
+                <p> <label for="location"> Dojo Location: </label>
+                    <select name="location">
+                        <option value="Seattle">  Seattle </option>
+                        <option value="mountain_view">  Mountain View </option>
+                        <option value="dallas">  Dallas </option>
+                        <option value="dc">  DC </option>
+                    </select>
+                </p>
+                <p> <label for="language"> Favorite Language </label>
+                <select name="language">
+                        <option value="js">  Javascript </option>
+                        <option value="swift"> Swift </option>
+                        <option value="python">  Python </option>
+                        <option value="ruby">  Ruby </option>
+                    </select>
+                </p>
+                <p> <label for="comment"> Comment (optional):</label><textarea name="comment"></textarea></p>
+                <input type="submit" name="add_info" id = "add_info">
+            </form>
+        </div>
+    </body>
+</html>
