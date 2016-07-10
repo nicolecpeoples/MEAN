@@ -1,0 +1,75 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title></title>
+        <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    	<script type ="text/javascript" src="/socket.io/socket.io.js"></script>
+    	<script>
+    		$(document).ready(function(){
+    			var socket = io.connect();
+
+    			$('#epic_btn').click(function(event){
+    				event.preventDefault();
+    				//send info back to counter
+    				console.log("I've been clicked");
+
+    				socket.emit('count_up'); 
+    			});
+    				
+    				socket.on('counted', function(data){
+    				$('.num').html(data.counter);
+    				})
+
+    			$('#reset').click(function(){
+    				console.log('reset has been clicked');
+    				socket.emit('reset_count');
+    			})
+
+    			});
+
+
+
+
+    	</script>
+    	<style>
+    	.container {
+    		max-width: 1000px;
+    		margin:  0 auto;
+    		text-align: center;
+
+    	}
+    	#epic_btn {
+    		background: blue;
+    		color: white;
+    		width: 250px;
+    		padding: 30px 10px;
+    		box-sizing: border-box;
+    		margin: 0 auto;
+    		cursor: pointer;
+    	}
+
+    	#reset {
+    		background: red;
+    		color: white;
+    		padding: 10px;
+    		margin: 30px auto 0;
+    		text-decoration: none;
+    		display: block;
+    		max-width: 200px;
+    	}
+    	</style>
+    </head>
+    <body>
+    	<div class="container">
+    		<h2> This button has been pushed <span class="num">0</span> times </h2>
+    		<p> push this button to increase the count </p>
+    		<button id="epic_btn"> Push This Epic Button </button>
+
+    		<a href="" id="reset"> Reset Count </a>
+    	</div>
+    </body>
+</html>
