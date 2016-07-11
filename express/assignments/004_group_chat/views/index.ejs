@@ -1,0 +1,56 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Group Chat</title>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.0.0/jquery.js"></script>
+        <script src="/socket.io/socket.io.js"></script>
+        <script>
+         	$(document).ready(function(){
+         		var socket = io.connect();
+
+         		var username=prompt("Enter your name");
+         		if(username){
+         			socket.emit('username', { username: username});	
+         		}
+
+                socket.on('all_messages', function(data){
+                    console.log(data);
+                    for(var i= 0; i <data.chatHistory.length; i++) {
+                        $('.chat').append("<p> " + data.chatHistory[i].username + " said: " + data.chatHistory[i].message + " </p>")
+                    }
+                })
+
+                socket.on('newusername', function(data){
+                    console.log(data);
+                    $('.chat').append("<p>" + data.username + " has entered the chat </p>");
+                })
+
+                $('#chat_btn').click(function(event){
+                    var newMessage = $('.message').val();
+                    console.log(newMessage);
+                    socket.emit('addmessage', {message: newMessage, username: username});
+                })
+
+                socket.on('newMessageReceived', function(data){
+                    $('.chat').append("<p>" + data.username + " says: " + data.message + "</p>");
+                })
+         	});
+        </script>	
+    </head>
+    <body>
+    	<div class="container">
+    		<p> Here is my index file </p>
+            <div class="groupchat">
+                <div class="chat">
+
+                </div>
+                <input name="message" class="message">
+                <button id="chat_btn"> Chat! </button>
+            </div>
+    	</div>
+    </body>
+</html>
