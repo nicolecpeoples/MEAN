@@ -1,0 +1,25 @@
+1. use my_first_db
+2. db.createCollection('students')
+3 & 4. db.students.insert({name: "Caitlin", home_state: "Washington", lucky_num: 6, birthday: {month: "January", day: 9, year:1983}})
+db.students.insert({name: "Jackson", home_state: "Kentucky", lucky_num: 4, birthday: {month: "March", day: 9, year:1985}})
+5. db.students.find({}) 
+6.   db.students.find( { $or: [ { home_state: { $eq: "Washington" } }, { home_state: { $eq: "Kentucky" } } ] } )
+
+
+7. 1)db.students.find({lucky_num: {$gt: 6}})
+	2) db.students.find({lucky_num: {$lte: 10}})
+	3)  db.students.find( {$and: [ { lucky_num: {$not: {$gt: 9 } }}, { lucky_num: {$not: {$lt: 1 } }} ]})
+	better db.students.find({ lucky_num: {$lt: 1, $gt: 9}})
+
+8.  close but not right --> db.students.update({}, {$set:{ interests: ['coding', 'brunch', 'MongoDB']}}, {multi:true})
+9. db.students.update({_id: ObjectId("57844e776a1f56452c1ea717")}, {$push: {interests: 'coffee'}})
+10. db.students.update({_id: ObjectId("57844e776a1f56452c1ea717")}, {$push: {interests: 'taxes'}})
+11. db.students.update({_id: ObjectId("57844e776a1f56452c1ea717")}, {$pop: {interests: 'taxes'}})
+12.
+13. db.students.remove({name: "Kyle"})
+14. db.students.remove({lucky_num: {$gt: 5}}, true)
+15. db.students.update({}, {$set: {number_of_belts: 0}}, {multi:true})
+16.	db.students.update({home_state: "Washington"}, {$set: {number_of_belts: 1}}, {multi:true}) can set {upsert:true} - to add if field doesn't exist
+17. db.students.update($rename: { number_of_belts: belts_earned }, {multi: true})
+18. db.students.update({},{$rename: {'number_of_belts': 'belts_earned' }}, {multi:true})
+19. db.students.update({}, {$currentDate: { "current.date": { $type: "timestamp"}} })

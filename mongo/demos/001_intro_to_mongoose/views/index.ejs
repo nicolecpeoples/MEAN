@@ -1,0 +1,28 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title></title>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.0.0/jquery.js"></script>
+       
+        <script>
+
+        </script>
+
+    </head>
+    <body>
+    <% for (var i=0; i < (userinfo).length; i++) { %>
+    	<p>	<%= userinfo[i].user_name %> </p>
+    <% } %>
+    	<div class="container">
+    		<form action="/users" method="post">
+    			<p> Name: <input type="text" name="user_name"></p>
+    			<p> Age: <input type="text" name="user_age"></p>
+    			<input type="submit" id="user_submit">
+    		</form>
+    	</div>
+    </body>
+</html>
