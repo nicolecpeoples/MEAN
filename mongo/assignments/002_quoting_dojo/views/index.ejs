@@ -1,0 +1,25 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title></title>
+        <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    	<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
+    	<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
+    </head>
+    <body>
+    	<div class="container">
+    		<h3> Welcome to Quoting Dojo </h3>
+			<form action="/quotes" method="post">
+				<p> Your name: <input type="text" name="username"></p>
+				<p> Your Quote: <textarea name="quote"></textarea> </p>
+				<input type="submit" value="Submit Quote">
+			</form>
+
+			<a href="/quotes" class="btn btn-primary"> Skip to Quotes! </a>
+    	</div>
+    </body>
+</html>
