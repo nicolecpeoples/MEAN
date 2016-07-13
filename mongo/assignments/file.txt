@@ -23,3 +23,5 @@ db.students.insert({name: "Jackson", home_state: "Kentucky", lucky_num: 4, birth
 17. db.students.update($rename: { number_of_belts: belts_earned }, {multi: true})
 18. db.students.update({},{$rename: {'number_of_belts': 'belts_earned' }}, {multi:true})
 19. db.students.update({}, {$currentDate: { "current.date": { $type: "timestamp"}} })
+
+db.comments.update({},{$rename: {'name': 'commentor_name' }}, {multi:true})

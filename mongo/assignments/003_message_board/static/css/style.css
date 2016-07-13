@@ -1,0 +1,23 @@
+.wrap {
+	max-width: 700px;
+	margin: 0 auto;
+}
+
+textarea {
+	width: 100%;
+	min-height: 50px;
+}
+
+.post-wrap {
+	max-width: 600px;
+	margin: 20px auto;
+}
+.comments {
+	background: #B3BCE0;
+	margin: 10px 0 0 0;
+
+}
+.comment-wrap {
+	margin: 0;
+	padding: 10px;
+}

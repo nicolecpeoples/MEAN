@@ -100,7 +100,7 @@ app.post('/dogs/:id', function(req, res) {
          dog.dog_age = req.body.dog_age
          dog.save(function(err){
              // if save was successful awesome!
-             if(err) {
+        if(err) {
             console.log('something went wrong');
 
         }

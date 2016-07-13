@@ -1,0 +1,56 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title></title>
+         <link rel="stylesheet" href="/css/style.css">
+        <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    	<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
+    	<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
+
+    </head>
+    <body>
+    	<div class="container">
+    		<h2> The Dojo Message Board</h2>
+            <hr>
+            <div class="wrap">
+                  <% if(typeof(errors) != 'undefined' ) { %>
+                     <% for (var x in errors) { %>
+                      <h3><%= errors[x].message %></h3>
+                     <% } %>
+                 <% } %>
+                        <h3> Post a Message </h3>
+			<form action="/posts" method="post">
+				<p> Name: <input type="text" name="name"></p>
+				<p> Message: </p> <p><textarea name="message"></textarea> </p>
+				<input type="submit" value="Post Message" class="btn btn-primary">
+			</form>
+
+            <% for (var i in posts) { %>
+            <div class="post-wrap">
+                <h4>Name: <%= posts[i].name %></h4>
+                <h4>Message: <%= posts[i].message %></h4>
+                <p> Posted at: <%= moment(posts[i].createdAt).format(' MMMM Do, YYYY  h:mm A')%></p>
+
+                <form action="/posts/<%= posts[i]._id %>" method="post">
+                    <p> Name: <input type="text" name="name"></p>
+                    <p> Comment: </p> <p><textarea name="comment"></textarea> </p>
+                    <input type="submit" value="Comment" class="btn btn-primary">
+                </form>
+                <div class="comments">
+                <% for (var j= 0; j < posts[i].comments.length; j++) { %>
+                    <div class="comment-wrap">
+                        <h5> Name: <%= posts[i].comments[j].commentor_name %></h5>
+                        <h5> Comment: <%= posts[i].comments[j].comment %></h5>
+                    </div>
+                <% } %>
+                </div>
+            <% } %>
+            </div>
+            </div>
+    	</div>
+    </body>
+</html>
