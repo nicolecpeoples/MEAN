@@ -1,0 +1,35 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title></title>
+        <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    	<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
+    	<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
+    </head>
+    <body>
+    	<div class="container">
+			<table class="table">
+				<tr>
+					<th>Dog Name</th>
+					<th>Dog Breed</th>
+					<th>Dog Age</th>
+					<th>Action</th>
+				</tr>
+	    			<% for (var x in dogs) { %>
+	    			<tr>
+	    				<td><%= dogs[x].dog_name %></td>
+	    				<td> <%= dogs[x].dog_breed %></td>
+	    				<td><%= dogs[x].dog_age %></td>
+	    				<td> <a href="dogs/<%= dogs[x]._id %>"> View </a> | <a href="dogs/<%= dogs[x]._id %>/edit"> Edit </a> | <form action="/dogs/<%= dogs[x]._id %>/destroy" method="post"> <input type="submit" value="Destroy"></form>  </td>
+	    			</tr>
+	    			<% } %>
+			</table>
+
+			<a href="dogs/new" class="btn btn-primary"> Add New Dog </a>
+    	</div>
+    </body>
+</html>

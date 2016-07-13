@@ -1,1 +1,1 @@
-https://github.com/nicolecpeoples/MEAN/tree/master/mongo/assignments/002_quoting_dojo
+https://github.com/nicolecpeoples/MEAN/tree/master/mongo/assignments/003_message_board

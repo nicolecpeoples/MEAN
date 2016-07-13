@@ -71,10 +71,12 @@ var postSchema = new mongoose.Schema({
  text: {type: String, required: true }, 
  comments: [{type: Schema.Types.ObjectId, ref: 'Comment'}]
 }, {timestamps: true });
+
 var commentSchema = new mongoose.Schema({
  _post: {type: Schema.Types.ObjectId, ref: 'Post'},
  text: {type: String, required: true }
 }, {timestamp: true });
+
 app.get('/posts/:id', function (req, res){
  Post.findOne({_id: req.params.id})
  .populate('comments')

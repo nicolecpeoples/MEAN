@@ -6,7 +6,7 @@ mongoose.connect('mongodb://localhost/message_board_db');
 
 var Schema = mongoose.Schema;
 
-//Create mongoose schemas
+//Create mongoose schemas/models
 var postSchema = new mongoose.Schema({
  name: { type: String, required: true, minlength: 4},
  message: { type: String, required: true, minlength: 10}, 
