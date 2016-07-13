@@ -1,5 +1,6 @@
 var mongoose = require('mongoose');
 var Quote = mongoose.model('Quote');
+
 module.exports = {
   show: function(req, res) {
     Quote.find({}, function(err, quotes) {

@@ -1,1 +1,1 @@
-https://github.com/nicolecpeoples/MEAN/tree/master/mongo/assignments/003_message_board
+https://github.com/nicolecpeoples/MEAN/tree/master/mongo/assignments/004_modularize_mongoose
