@@ -1,0 +1,91 @@
+<html ng-app= "myApp">
+<head>
+  <title></title>
+  <style>
+      .container {
+        padding: 20px 0;
+      }
+  </style>
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css">
+  <script src='bower_components/angular/angular.js'></script>
+  <script type='text/javascript'>
+    var myApp = angular.module('myApp', []);
+    myApp.controller('usersController', function ($scope, $http){
+      // we don't need a factory for this demo, it wouldn't make a difference if we did.
+        $scope.users = [];
+        $scope.sortType     = 'first_name'; // set the default sort type
+          $scope.sortReverse  = false;  // set the default sort order
+
+       $scope.addnewUser = function() {
+           $scope.users.push($scope.addUser);
+           $scope.addUser = {};
+           
+           console.log($scope.users);
+       }
+       $scope.deleteUser = function(user){
+          var deletePerson = $scope.users[user];
+          $scope.users.splice(user, 1);
+       }
+      
+    });
+  </script>
+</head>
+<body ng-app='myApp'>
+  <div class="container">
+    <h3> Welcome to Users Controller </h3>
+    <div ng-controller='usersController'>
+      
+     <form>
+      <table>
+        <tr>
+          <td>First Name </td>
+          <td><input type="text" ng-model="addUser.first_name"></td>
+        </tr>
+        <tr>
+          <td>Last Name </td>
+          <td><input type="text" ng-model="addUser.last_name"></td>
+        </tr>
+        <tr>
+          <td>Favorite Language </td>
+          <td><input type="text" ng-model="addUser.fave_lang"></td>
+        </tr>
+        <tr>
+          <td></td>
+          <td><input type="submit" value ="Create User" ng-click="addnewUser()"></td>
+        </tr>
+      </table>
+     </form>
+     <p> Search Users: <input type="text" ng-model="userSearch">
+      <table class="table">
+        <thead> 
+          <tr>
+            <th> First Name 
+            <a href="#" ng-click="sortType = 'first_name'">
+           <span  class="fa fa-caret-down"></span>
+          </th>
+            <th> Last Name 
+            <a href="#" ng-click="sortType = 'last_name'">
+           <span class="fa fa-caret-down"></span>
+            </th>
+            <th> Fave Language 
+              <a href="#" ng-click="sortType = 'fave_lang'">
+              <span  class="fa fa-caret-down"></span>
+            </th>
+            <th> Actions </th>
+          </tr>
+        </thead>
+        <tbody ng-if="users">
+
+          <tr ng-repeat="user in users| orderBy: sortType " >
+            <td>{{user.first_name}}</td>
+            <td>{{user.last_name}}</td>
+            <td>{{user.fave_lang}}</td>
+            <td><input type="submit" value="Delete User" ng-click="deleteUser(user)"></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    </div>
+</body>
+</html>

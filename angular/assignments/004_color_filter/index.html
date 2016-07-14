@@ -33,7 +33,7 @@
           </tr>
         </thead>
         <tbody>
-          <tr ng-repeat="color in colors | filter:colorFilter">
+          <tr ng-repeat="color in colors | filter:colorFilter ">
             <td>{{color.name}}</td>
             <td>{{color.hex}}</td>
             <td class="colorstyling" style="background: rgb{{color.rgb}}"></td>
