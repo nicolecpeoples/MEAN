@@ -1,1 +1,1 @@
-https://github.com/nicolecpeoples/MEAN/tree/master/mongo/assignments/004_modularize_mongoose
+https://github.com/nicolecpeoples/MEAN/tree/master/angular/assignments/001_first_angular_app
