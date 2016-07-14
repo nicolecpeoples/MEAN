@@ -1,0 +1,58 @@
+<!-- Directives 
+	Directives direct something to happen within your HTML -->
+
+<!-- Compiling Angular
+	Angular documentation refers to both templates and views. Simply put: angular templates get compiled to angular views by the browser. -->
+
+<!-- Placing the ng-app direct and using Angular
+	To tell our HTML it is being controlled by Angular, we have to use the ng-app directive. This is like is the ignition key for angular, and allows other angular directives to work with in the scope of this main directive. Let’s make an HTML document called angular.html and make it look like this: -->
+
+	<html ng-app=''>
+    <head>
+      <script src="bower_components/angular/angular.js"></script>
+    </head>
+    <body>
+        <h3>{{ 49567 * 2243 }} </h3>
+        <h3 ng-bind='49567 * 2243'></h3>
+    </body>
+</html>
+
+
+<!-- ng-bind 
+	Double brackets are a way to execute Angular code that will be rendered into HTML. Load this page to see how the page renders! The same effect can be achieved using a ng-bind directive. There is no advantage to one or the other in terms of speed, but the double curly brackets might show up on a slow-loading browser before Angular gets completely rendered, whereas ng-bind won’t. Play with both and see what you like.  -->
+
+<!-- Data binding, ng-init and ng-repeat  
+	Data Binding: allows angular to keep track of app data as a variable. As a default the devs of Angular created a variable object called $scope. 
+	Most directives have a scope: usually from the tag that they are initial bound to, through the end of that tag. The $scope object can hold data related to the directives scope.
+
+	We can add data to the $scope object using the ng-init directive. You will not see this directive very much in practice, but it is a fantastic introductory tool. Let’s make our angular.html file look like this now: -->
+
+	<html ng-app=''>
+	<head>
+	      <script src="bower_components/angular/angular.js"></script>
+	</head>
+	<body>
+	  <div ng-init="students=['Mike', 'John', 'Trey', 'India']">
+	    <ul>
+	        <li ng-repeat="student in students">{{student}}</li>
+	    </ul>   
+	  </div>
+	</body>
+	</html>
+
+	<!-- ng init allows us to initialize data and repeat allows us to loop through the data -->
+
+<html ng-app=''>
+<head>
+    <script src="bower_components/angular/angular.js"></script>
+</head>
+<body>
+  <div ng-init="students=[{name: 'Mike', age: 34}, {name: 'John', age: 24}, {name: 'Trey', age: 24}, {name: 'India', age: 35}]">
+    <ul>
+        <li ng-repeat="student in students">{{student.name}}, {{student.age}}</li>
+    </ul>   
+  </div>
+</body>
+</html>
+
+

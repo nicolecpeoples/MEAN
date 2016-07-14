@@ -1,0 +1,70 @@
+<!-- Angular Controllers
+If the module is the head-honcho of Angular, then the controllers are the second-in-commands. Angular controllers are responsible for logic pertaining to the flow of data in a particular portion of our view page. In general, each 1 partial or section of HTML has a controller attached to it, so we can bind values from JavaScript to that part of HTML. Remember in the  'directives and data binding' tab we talked about $scope? Well, the $scope variable is what allows the controller to pass data to the view it controls. Simply put:
+
+The $scope object is the glue between the controller and the view.
+-->
+
+<html ng-app='myApp'>
+  <head>
+    <script src='https://ajax.googleapis.com/ajax/libs/angularjs/1.3.5/angular.min.js'></script>
+    <script type='text/javascript'>
+      var myAppModule = angular.module('myApp', []);
+      // the .controller() method adds a controller to the module
+      myAppModule.controller('studentsController', function ($scope){
+          $scope.students = [
+            {name: 'Mike', age: 34}, 
+            {name: 'John', age: 24}, 
+            {name: 'Trey', age: 24}, 
+            {name: 'India', age: 35}
+          ];
+      });
+    </script>
+  </head>
+<body>
+  <div ng-controller='studentsController'>
+    <ul>
+        <li ng-repeat="student in students">{{ student.name }},{{ student.age }}</li>
+    </ul>   
+  </div>
+</body>
+</html>
+
+or 
+
+<html ng-app='myApp'>
+<head>
+    <script src='https://ajax.googleapis.com/ajax/libs/angularjs/1.3.5/angular.min.js'></script>
+    <script type='text/javascript'>
+       var myAppModule = angular.module('myApp', []);
+       myAppModule.controller('studentsController', function (){
+          this.students = [
+              {name: 'Mike', age: 34}, 
+              {name: 'John', age: 24}, 
+              {name: 'Trey', age: 24}, 
+              {name: 'India', age: 35}
+          ];
+          this.addStudent = function(){
+          this.students.push(this.newStudent);
+          this.newStudent = {};
+       }
+      });
+    </script>
+</head>
+<body>
+  <div ng-controller='studentsController as studentsCtrl'>
+    <ul>
+        <li ng-repeat="student in studentsCtrl.students">{{ student.name }}, {{ student.age }}</li>
+    </ul>
+    <form>
+       Name: <input type='text' ng-model='studentsCtrl.newStudent.name'>
+       Age: <input type='text' ng-model='studentsCtrl.newStudent.age'>
+       <input type='submit' value='add new student' ng-click='studentsCtrl.addStudent()'>
+    </form>
+  </div>
+</body>
+</html>
+<!-- The ng-click directive executed a method we assigned to $scope called addStudent().  The ng-click directive functions very much like the .click() jQuery handler (and by extension, the onClick html attribute). Note: Similar functionality can be achieved using an ng-submit directive on the form tag.
+
+The values in the form elements were added as a JSON object to the array using the standard .push() method on the $scope.students array. Since we changed $scope data, the data-binding feature recognized that the data in the ng-repeat loop needed to be updated so one more list item was added to reflect this.
+
+The ng-model directive created a new variable in our $scope called newStudent. The ng-model directive is what allows data on the VIEW side to be available to the $scope variable.  We will utilize the ng-model directive whenever we want to pass data to the controller. -->
