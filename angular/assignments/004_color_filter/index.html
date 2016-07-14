@@ -1,0 +1,46 @@
+<html ng-app= "myApp">
+<head>
+  <title></title>
+  <style>
+      .colorstyling {
+        width: 200px;
+      }
+  </style>
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
+  <script src='bower_components/angular/angular.js'></script>
+  <script type="text/javascript" language="javascript" src="colors.json"></script> 
+  <script type='text/javascript'>
+    var myApp = angular.module('myApp', []);
+    console.log(myApp);
+    myApp.controller('colorController', function ($scope, $http){
+      // we don't need a factory for this demo, it wouldn't make a difference if we did.
+         console.log("color1", jsonObject.colors[1]);
+         console.log(jsonObject);
+         $scope.colors = jsonObject.colors;
+    });
+  </script>
+</head>
+<body ng-app='myApp'>
+  <div class="container">
+    <div ng-controller='colorController'>
+     <label>Find a Color! <input type="text" ng-model="colorFilter"></label>
+      <table class="table">
+        <thead> 
+          <tr>
+            <th>  Color Name </th>
+            <th>  Hex </th>
+            <th> Color </th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr ng-repeat="color in colors | filter:colorFilter">
+            <td>{{color.name}}</td>
+            <td>{{color.hex}}</td>
+            <td class="colorstyling" style="background: rgb{{color.rgb}}"></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    </div>
+</body>
+</html>

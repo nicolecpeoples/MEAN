@@ -1,1 +1,1 @@
-https://github.com/nicolecpeoples/MEAN/tree/master/angular/assignments/001_first_angular_app
+https://github.com/nicolecpeoples/MEAN/tree/master/angular/assignments/002_controller_directives
