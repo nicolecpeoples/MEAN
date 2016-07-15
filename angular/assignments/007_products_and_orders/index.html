@@ -9,10 +9,11 @@
     <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
     <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css">
     <script src='bower_components/angular/angular.js'></script>
-    <script src='product_factory.js'></script>
-    <script src='product_controllers.js'></script>
+    <script src='products_factory.js'></script>
+    <script src='products_controller.js'></script>
+    <script src='orders_controller.js'></script>
     <script>
-      myApp = angular.module('myApp', ['product_factory', 'product_controllers']);
+      myApp = angular.module('myApp', ['products_factory', 'products_controller', 'orders_controller']);
 
       myApp.directive('validNumber', function() {
       return {
@@ -55,7 +56,7 @@
 </head>
 <body ng-app='myApp'>
   <div class="container">
-    <h3> Welcome to Products Controller </h3>
+      <h3> Welcome to Products Controller </h3>
       <div ng-controller="productsController">
             
        <form>
@@ -98,7 +99,38 @@
             </tr>
           </tbody>
         </table>
-    </div>
+      </div>
+
+      <h3> Orders Controller </h3>
+      <div ng-controller="ordersController">
+        <table class="table">
+          <thead> 
+            <tr>
+              <th> Name
+              <a href="#" ng-click="sortType = 'name'">
+             <span  class="fa fa-caret-down"></span>
+            </th>
+              <th> Price
+              <a href="#" ng-click="sortType = 'price'">
+             <span class="fa fa-caret-down"></span>
+              </th>
+              <th> Qty Available </th>
+              <th> Actions </th>
+            </tr>
+          </thead>
+          <tbody ng-if="products">
+
+            <tr ng-repeat="product in products |orderBy: sortType" >
+              <td>{{product.name}}</td>
+              <td>{{product.price}}</td>
+              <td>{{product.quantity}}</td>
+
+              <td ng-if="product.quantity > 0" ><input type="submit" value="Buy" ng-click="buyProduct(product)"></td>
+              <td ng-if="product.quantity == 0" >out of stock</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
     </div>
 </body>
 </html>

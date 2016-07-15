@@ -1,1 +1,1 @@
-https://github.com/nicolecpeoples/MEAN/tree/master/angular/assignments/005_controlling_users
+https://github.com/nicolecpeoples/MEAN/tree/master/angular/assignments/006_product_factory
