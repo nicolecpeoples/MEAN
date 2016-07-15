@@ -1,0 +1,104 @@
+<html ng-app= "myApp">
+<head>
+  <title></title>
+  <style>
+      .container {
+        padding: 20px 0;
+      }
+  </style>
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css">
+    <script src='bower_components/angular/angular.js'></script>
+    <script src='product_factory.js'></script>
+    <script src='product_controllers.js'></script>
+    <script>
+      myApp =angular.module('myApp', ['product_factory', 'product_controllers']);
+
+      myApp.directive('validNumber', function() {
+      return {
+        require: '?ngModel',
+        link: function(scope, element, attrs, ngModelCtrl) {
+          if(!ngModelCtrl) {
+            return; 
+          }
+
+          ngModelCtrl.$parsers.push(function(val) {
+            if (angular.isUndefined(val)) {
+                var val = '';
+            }
+            var clean = val.replace(/[^0-9\.]/g, '');
+            var decimalCheck = clean.split('.');
+
+            if(!angular.isUndefined(decimalCheck[1])) {
+                decimalCheck[1] = decimalCheck[1].slice(0,2);
+                clean =decimalCheck[0] + '.' + decimalCheck[1];
+            }
+
+            if (val !== clean) {
+              ngModelCtrl.$setViewValue(clean);
+              ngModelCtrl.$render();
+            }
+            return clean;
+          });
+
+          element.bind('keypress', function(event) {
+            if(event.keyCode === 32) {
+              event.preventDefault();
+            }
+          });
+        }
+      };
+    });
+
+    </script>
+  
+</head>
+<body ng-app='myApp'>
+  <div class="container">
+    <h3> Welcome to Products Controller </h3>
+    <div ng-controller="productsController">
+          
+     <form>
+      <table>
+        <tr>
+          <td>Product Name: </td>
+          <td><input type="text" ng-model="newProduct.name"></td>
+        </tr>
+        <tr>
+          <td>Product Price:  </td>
+          <td><input type="text" ng-model="newProduct.price" valid-number></td>
+        </tr>
+        <tr>
+          <td></td>
+          <td><input type="submit" value ="Add Product" ng-click="addProduct(newProduct)"></td>
+        </tr>
+      </table>
+     </form>
+     <p> Search Products: <input type="text" ng-model="productSearch">
+      <table class="table">
+        <thead> 
+          <tr>
+            <th> Name
+            <a href="#" ng-click="sortType = 'name'">
+           <span  class="fa fa-caret-down"></span>
+          </th>
+            <th> Price
+            <a href="#" ng-click="sortType = 'price'">
+           <span class="fa fa-caret-down"></span>
+            </th>
+            <th> Actions </th>
+          </tr>
+        </thead>
+        <tbody ng-if="products">
+
+          <tr ng-repeat="product in products |orderBy: sortType |filter: productSearch" >
+            <td>{{product.name}}</td>
+            <td>{{product.price}}</td>
+            <td><input type="submit" value="Delete Product" ng-click="deleteProduct($index)"></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    </div>
+</body>
+</html>

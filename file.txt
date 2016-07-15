@@ -1,1 +1,1 @@
-https://github.com/nicolecpeoples/MEAN/tree/master/angular/assignments/002_controller_directives
+https://github.com/nicolecpeoples/MEAN/tree/master/angular/assignments/005_controlling_users
