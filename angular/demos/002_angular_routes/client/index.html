@@ -1,0 +1,37 @@
+<!doctype html >
+<html ng-app='app'>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title></title>
+        <script src="angular/angular.js" charset="utf-8"></script>
+        <script src="angular-route/angular-route.js" charset="utf-8"></script>
+        <script src="controllers/controller1.js" charset="utf-8"></script>
+        <script src="controllers/controller2.js" charset="utf-8"></script>
+        <script>
+        	var app = angular.module('app', ['ngRoute', 'controller1', 'controller2']);
+        	app.config(function($routeProvider){
+        		$routeProvider.when("/", 
+        		{
+        			templateUrl: 'partials/partial1.html'
+        			//controller:
+        			//controllerAs:
+        		}).when("/partial2", {
+        			templateUrl: 'partials/partial2.html'
+        		}).otherwise({
+        			redirectTo: "/"
+        		});
+        	});
+        </script>
+    </head>
+    <body >
+    <div ng-view>
+    <!-- partials will load here -->
+    </div>
+    Heyyyyyyy
+    <a href="#/"> Partial 1 </a> <br/>
+     <a href="#/partial2"> Partial 2 </a>
+    </body>
+</html>

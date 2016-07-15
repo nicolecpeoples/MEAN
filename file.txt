@@ -1,1 +1,1 @@
-https://github.com/nicolecpeoples/MEAN/tree/master/angular/assignments/006_product_factory
+https://github.com/nicolecpeoples/MEAN/tree/master/angular/assignments/007_products_and_orders

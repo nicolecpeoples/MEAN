@@ -1,0 +1,30 @@
+<h2>User List </h2>
+<div ng-controller="userListsController">
+
+	<table class="table">
+		<thead>
+			<tr>
+				<th> First Name
+					<a href="" ng-click="sortType = 'first_name'">
+           			<span  class="fa fa-caret-down"></span>
+				</th>
+				<th> Last Name 
+					<a href="" ng-click="sortType = 'last_name'">
+           			<span  class="fa fa-caret-down"></span>
+				</th>
+
+				<th> Fave Language 
+					<a href="" ng-click="sortType = 'fave_lang'">
+           			<span  class="fa fa-caret-down"></span>
+				</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr ng-repeat="customer in customers | orderBy: sortType">
+				<td>{{customer.first_name}}</td>
+				<td> {{customer.last_name}} </td>
+				<td>{{customer.fave_lang}} </td>
+			</tr>
+		</tbody>
+	</table>	
+</div>

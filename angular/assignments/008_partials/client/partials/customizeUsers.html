@@ -1,0 +1,52 @@
+<h2> Orders Controller </h2>
+<div ng-controller="customizeUsersController">
+	<form>
+		<table>
+			<tr>
+				<td>First Name:</td>
+				<td><input type="text" ng-model="newCustomer.first_name"></td>
+			</tr>
+			<tr>
+				<td>Last Name:</td>
+				<td><input type="text" ng-model="newCustomer.last_name"></td>
+			</tr>
+			<tr>
+				<td>Favorite Language:</td>
+				<td><input type="text" ng-model="newCustomer.fave_lang"></td>
+			</tr>
+			<tr>
+				<td></td>
+				<td><input type="submit" value="Create User" ng-click="addCustomer(newCustomer)"></td>
+			</tr>
+		</table>
+	</form>
+
+	<table class="table">
+		<thead>
+			<tr>
+				<th> First Name
+					<a href="" ng-click="sortType = 'first_name'">
+           			<span  class="fa fa-caret-down"></span>
+				</th>
+				<th> Last Name 
+					<a href="" ng-click="sortType = 'last_name'">
+           			<span  class="fa fa-caret-down"></span>
+				</th>
+
+				<th> Fave Language 
+					<a href="" ng-click="sortType = 'fave_lang'">
+           			<span  class="fa fa-caret-down"></span>
+				</th>
+				<td> Action</td>
+			</tr>
+		</thead>
+		<tbody>
+			<tr ng-repeat="customer in customers | orderBy: sortType">
+				<td>{{customer.first_name}}</td>
+				<td> {{customer.last_name}} </td>
+				<td>{{customer.fave_lang}} </td>
+				<td> <input type="submit" value="Delete User" ng-click="deleteCustomer(customer)"</td>
+			</tr>
+		</tbody>
+	</table>	
+</div>
