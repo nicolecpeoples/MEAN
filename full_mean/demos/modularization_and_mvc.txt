@@ -1,0 +1,27 @@
+MVC in Nodejs/Express
+The node server is the backbone of your application. It organizes allows us to pull together all of the various pieces of the Express framework and organize them into an MVC.
+
+Key Pieces of the Express MVC
+Routes File. In Express the routes file functions in a dual capacity:
+They route to different Mongoose Controller methods.
+They can also function directly as a Controller.
+Our preference is to route them through a file in the ‘Controllers’ folder and call methods from the object that is exported by that file, rather than the later, thus keeping the routes file, truly just a routes file.
+The Controllers Files. These function as a typical Controller file. They dictate which data get returned using the response object (e.g. res.json()), often after communicating with a models file. Controllers rely heavily on promises/callbacks to determine when data can be returned to the views.
+The Models Files. These are the blueprints for communication with the database. In addition the models files can be used to do logic (e.g. validation) prior to saving information, and filtering when returning information. We have intentionally kept the models we have demonstrated lean in our examples, but know that the MVC ideal of Thin Controllers and Fat Models remains intact in the Express.
+The Mongoose Connection File. As written, this file allows us to connect with the database, and loads all of the files with a .js extension that are found in the models folder.
+Hint put console.log of the file type on the top of each of your files to make sure that they load in the right order!
+
+Key Pieces of the Angular Front End Framework
+The Angular Module File(s) (app.js?). The Angular module file creates a module that we can use in our views.
+This generally includes providers, such as ‘ngRoute’, ‘ngCookies’, etc.
+In addition this file often includes the .config specifications, including the routeProvider which will generate routes that load partial views into the ng-view directive.
+Angular Factories. The factories files are singleton services that generate an object that can be injected into other directives. We primarily use the factories to inject into the Angular controllers. In this use case: the Factory can be used to store local data as well as communicate with the server via $http requests that are caught by the Routes file and generally return JSON information to the factory which is handled by a promise.
+Angular Controllers. The controllers integrate with the Factories and the HTML view (generally a partial view) that they are controlling, enabling data to be handled by Angular. Data are not passed from controller to controller directly, in most cases, but rather through an Angular Factory that is injected into each of the communicating controllers.
+Each of the above pieces can be built separately:
+1) A simple server. This just needs to require (imports) the right files.
+– Integration with MVC: routes.js
+
+2) The routes, controllers, models and mongoose connection. These files work as a team to listen for data to the server depending on requests caught by routes.js.
+– Integration through routes (http requests) from factories (for JSON) (and routeProvider for partial views)
+
+3) An angular front end. Factories, and routeProvider can be set to be the only piece of angular that communicates with the server. The remaining Angular code can be written independently of a server.
