@@ -6,7 +6,7 @@ var  express  = require( 'express' ),
 
 
 app.use( express.static( path.join( root, 'client' )));
-app.use( express.static( path.join( root, 'server' )));
+app.use( express.static( path.join( root, 'js' )));
 app.use( express.static( path.join( root, 'bower_components' )));
 
 

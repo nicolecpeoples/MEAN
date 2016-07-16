@@ -12,8 +12,8 @@
 		</tr>
 	</thead>
 	<tbody>
-		<tr ng-repeat="team in teams" >
-			<td>{{team.name}}</td>
+		<tr ng-repeat="team in teams track by $index" >
+			<td><a href="#/{{team.name}}" ng-bind = 'team.name'></a></td>
 			<td><input type="submit" value="Delete Team" ng-click="deleteTeam($index)"></td>
 		</tr>
 	</tbody>

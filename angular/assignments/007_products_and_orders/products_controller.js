@@ -14,6 +14,7 @@ angular.module('products_controller', ["products_factory"]).controller('products
   }
   $scope.deleteProduct = function(productData){
   	productFactory.deleteProducts(productData);
+    
   }
 
 }])

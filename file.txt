@@ -1,1 +1,1 @@
-https://github.com/nicolecpeoples/MEAN/tree/master/angular/assignments/008_partials
+https://github.com/nicolecpeoples/MEAN/tree/master/angular/assignments/009_players_and_teams

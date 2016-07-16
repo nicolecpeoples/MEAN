@@ -14,7 +14,8 @@
 		</tr>
 	</thead>
 	<tbody>
-		<tr ng-repeat="player in players">
+		<tr ng-repeat="player in players track by $index">
+			<td><a href="#/{{player.first_name}}" ng-bind = 'player.first_name'></a></td>
 			<td>{{player.first_name}} {{player.last_name}}</td>
 			<td><input type="submit" value="Delete Player" ng-click="deletePlayer($index)"></td>
 		</tr>

@@ -16,25 +16,30 @@
         <script src="controllers/associations_controller.js"></script>
         <script src="factories/player_factory.js"></script>
         <script src="factories/team_factory.js"></script>
+         <script type="text/javascript" src="/config/routes.js"></script>
         <script>
         var app = angular.module('app', ['ngRoute', 'player_controller', 'associations_controller', 'team_controller']);
 
         app.config(function($routeProvider){
-        		$routeProvider.when('/', 
-        		{
-        			templateUrl: 'partials/associations.html'
-        		})
-        		.when("/players", 
-        		{
-        			templateUrl: 'partials/players.html'
-        			//controller:
-        			//controllerAs:
-        		}).when("/teams", {
-        			templateUrl: 'partials/teams.html'
-        		}).otherwise({
-        			redirectTo: "/"
-        		});
-        	});
+    $routeProvider.when('/', 
+    {
+        templateUrl: 'partials/associations.html'
+    })
+    .when("/players", 
+    {
+        templateUrl: 'partials/players.html'
+        //controller:
+        //controllerAs:
+    }).when("/teams", {
+        templateUrl: 'partials/teams.html'
+    }) .when('/:playername',{
+      templateUrl: 'partials/player.html'
+     }).when('/:teamname',{
+      templateUrl: 'partials/team.html'
+     }).otherwise({
+        redirectTo: "/"
+    });
+});
         </script>
     </head>
     <body>

@@ -1,0 +1,31 @@
+<!-- ngMessage index page -->
+
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.5/angular.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.5/angular-route.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.0/angular-messages.js"></script>
+
+<script type = 'text/javascript'>
+    var myApp = angular.module('myApp', ['ngRoute', 'ngMessages']);
+   
+</script>
+
+<!-- player partial -->
+<div ng-controller='playersController as PC'>
+ <h3>New Player</h3>
+ <form name='playerForm'>
+     Name: <input type='text' name='name' ng-model='PC.newPlayer.name' ng-minlength='4' required>
+     <button ng-click='PC.createPlayer()'>Add Player</button>
+ </form>
+</div>
+
+
+<div ng-controller='playersController as PC'>
+ <form name='playerForm'>
+     Name: <input name='name' type='text'  ng-model='PC.newPlayer.name' ng-minlength='4' required >
+     <button ng-click='PC.createPlayer()'>Add Player</button>
+ </form>
+ <div ng-messages="playerForm.name.$error">
+     <p ng-message="minlength">The player name is too short.</p>
+     <p ng-message="required">The player name is required.</p>
+ </div>
+</div>
