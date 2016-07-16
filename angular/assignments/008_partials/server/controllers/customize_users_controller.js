@@ -1,5 +1,5 @@
-angular.module('customize_users', ['user_factory']).controller('customizeUsersController', ['$scope', 'userFactory', function($scope, userFactory){
-
+angular.module('customize_users', ['user_factory']).controller('customizeUsersController', ['$scope', 'userFactory', '$location', function($scope, userFactory, $location){
+	console.log($location)
 	$scope.customers = [];
 	$scope.sortType     = 'first_name';
 
@@ -10,6 +10,8 @@ angular.module('customize_users', ['user_factory']).controller('customizeUsersCo
 	$scope.addCustomer = function(userData){
 		userFactory.addCustomer(userData);
 		$scope.newCustomer = {};
+		$location.url('/list');
+		
 	}
 
 	$scope.deleteCustomer = function(index){

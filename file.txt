@@ -1,1 +1,1 @@
-https://github.com/nicolecpeoples/MEAN/tree/master/angular/assignments/007_products_and_orders
+https://github.com/nicolecpeoples/MEAN/tree/master/angular/assignments/008_partials
