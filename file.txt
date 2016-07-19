@@ -1,1 +1,1 @@
-https://github.com/nicolecpeoples/MEAN/tree/master/full_mean/assignments/002_friendsapi
+https://github.com/nicolecpeoples/MEAN/tree/master/full_mean/assignments/003_angular_friends

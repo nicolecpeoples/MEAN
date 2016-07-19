@@ -1,14 +1,21 @@
-var app = angular.module('app', ['ngRoute']);
+
 app.config(function ($routeProvider) {
 // Routes to load your new and edit pages with new and edit controllers attached to them!
-	$routeProvider.when('/new', {
-		templateUrl: 'partials/new.html'
+	$routeProvider.when('/', {
+		// controller: new_controller,
+		templateUrl: 'partials/all.html',
+		
+		
 	})
-	.when('/edit', {
+	.when('/new', {
+		templateUrl: 'partials/new.html',
+		controller: 'newController'
+	})
+	.when('/edit/:id', {
 		templateUrl: 'partials/edit.html'
 	})
 	.otherwise({
-        redirectTo: "/"
+        redirectTo: "/friends"
     });
 
 });

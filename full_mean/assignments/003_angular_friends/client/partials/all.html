@@ -1,0 +1,19 @@
+<div ng-controller="newController">
+        <div >
+            <table class="table">
+              <thead>
+                <tr>
+                  <td> Name</td>
+                  <td> Actions</td>
+                </tr>
+              </thead>
+              <tbody>
+                <tr ng-repeat="friend in friends">
+                  <td> {{friend.first_name}} {{friend.last_name}}</td>
+                  <td> <a href="#/edit/{{friend._id}}">Edit </a> </a></td>
+                </tr>
+              </tbody>
+            </table>
+           <p> </p>
+        </div>
+      </div>

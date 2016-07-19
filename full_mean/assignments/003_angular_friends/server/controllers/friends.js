@@ -17,21 +17,33 @@ function FriendsController(){
 	
 	};
 	this.create = function(req,res){
-		var friend = new Friend({first_name: req.params.first_name, last_name: req.params.last_name});
+		console.log(req.body.first_name, req.body.last_name);
+		var friend = new Friend({ first_name: req.body.first_name, last_name: req.body.last_name});
+		console.log(friend);
 		friend.save(function(err){
 			if(err) {
 	            res.json(err);
 				return;
 	        }
 	            
-	            res.redirect('/friends');
+	        redirect('/friends'); 
 		})
 	};
 
-
 	this.update = function(req,res){
-		Friend.update({_id: req.params.id}, function(err, data) {
-
+		console.log(req.body);
+		console.log(req.body.first_name);
+		Friend.findOne({_id: req.body._id}, function(err, friend) {
+			friend.first_name = req.body.first_name,
+			friend.last_name = req.body.last_name
+			console.log(friend);
+			friend.save(function(err){
+				if(err){
+					res.json(err);
+					return;
+				}
+				res.json(friend);
+			})
 		})
 	};
 	this.delete = function(req,res){
@@ -41,7 +53,7 @@ function FriendsController(){
 				return;
 	        }
 	            
-	            res.redirect('/friends');
+	        
 		})
 	};
 
