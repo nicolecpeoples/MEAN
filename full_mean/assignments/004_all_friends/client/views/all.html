@@ -1,0 +1,24 @@
+<div ng-controller="newController">
+        <div >
+            <table class="table table-striped">
+              <thead class="thead">
+                <tr>
+                  <td> Name</td>
+                  <td> Birthdate </td>
+                  <td> Show</td>
+                  <td> Update</td>
+                  <td> Delete</td>
+                </tr>
+              </thead>
+              <tbody>
+                <tr ng-repeat="friend in friends">
+                  <td> {{friend.first_name}} {{friend.last_name}}</td>
+                  <td> {{friend.dob | date:'MMM dd, yyyy'}} </td>
+                  <td> <a href="#/show/{{friend._id}}">Show </a> </a></td>
+                  <td> <a href="#/edit/{{friend._id}}">Edit </a> </a></td>
+                  <td> <input type="submit" value="Delete" ng-click="delete(friend)"> </a> </a></td>
+                </tr>
+              </tbody>
+            </table>
+        </div>
+      </div>

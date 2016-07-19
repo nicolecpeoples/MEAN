@@ -1,0 +1,6 @@
+<div ng-controller='showController as SC'>
+
+<p> Name: {{SC.friend.first_name }} {{SC.friend.last_name }}</p>
+<p> Birthdate: {{SC.friend.dob | date: 'MMM dd, yyyy'}}</p>
+<p> Created At: {{SC.friend.createdAt | date: 'MMM dd, yyyy'}} </p>
+</div>

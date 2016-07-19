@@ -1,0 +1,12 @@
+<!-- You will attach an ng-model and an ng-submit to your forms (but might want to wait until the next tab, when you have your controllers and factory) -->
+<div ng-controller="editController as EC">
+	<h1> Edit User </h1>
+	<h4> {{EC.friend.first_name}} {{EC.friend.last_name}} </h4>
+	<form >
+	  <!-- Appropriate inputs here! -->
+	  <p> First Name: <input type="text" name="{{EC.friend.first_name}}" placeholder="{{EC.friend.first_name}}" ng-model="EC.friend.first_name" name="first_name"> </p>
+	  <p> Last Name: <input type="text" name="last_name" placeholder="{{EC.friend.last_name}}" ng-model=EC.friend.last_name></p>
+	   <p> Birthday:<input type="date" name= "date" class="form-control" uib-datepicker-popup="{{format}}" ng-model="EC.friend.dob" placeholder="{{EC.friend.dob"/></p>
+	  <input type="submit" value="Edit User" ng-click="EC.edit()" class="btn btn-primary"> 
+	</form>
+</div>
